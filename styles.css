@@ -2,13 +2,55 @@
     display: flex; 
     align-items: center;
     height: 100%;
+    width: 95%;
+    justify-content: center;
+    flex-direction: column;
 }
 html , body{
     height: 100%;
+    width: 100%;
+}
+body {
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
 }
 .gameContainer {
-    width: 100vh;
+    width: 100%;
     height: 50vh;
-    background-color: blue;
+    background-color: lightgrey;
+    border: 5px solid black;
     padding: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+h1 {
+    font-family: 'sf_pixelateregular';
+    font-size: 48px;
+}
+.textInput {
+    width: 90%;
+    height: 81%;
+    font-size: 20px;
+}
+.enterButton{
+    background-color: grey;
+    width: 20%;
+    height: 99%;
+}
+.gameControls {
+    height: 10%;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border: 1px solid black;
+    display: flex;
+}
+.gameOutput {
+    height: 80%;
+    width: 100%;
+    background-color: lightgrey;
 }
