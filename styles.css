@@ -1,0 +1,14 @@
+.pageWrapper{
+    display: flex; 
+    align-items: center;
+    height: 100%;
+}
+html , body{
+    height: 100%;
+}
+.gameContainer {
+    width: 100vh;
+    height: 50vh;
+    background-color: blue;
+    padding: 0;
+}
