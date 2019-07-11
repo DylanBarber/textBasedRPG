@@ -8,6 +8,7 @@
     <title>RPG</title>
     <link href='./reset.css' rel='stylesheet' type='text/css'>
     <link href='./styles.css' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link href='./webfontkit-20190711-105551/stylesheet.css' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,25 +25,7 @@
             </div>
         </div>
     </div>
-    <script>
-        //disable textArea input from user
-        document.querySelector('.gameOutput').disabled = true;
-        // let input;
-        function enterFunction(input) {
-            document.querySelector('.gameOutput').value += (input + '\n');
-        }
-        // document.querySelector('#gameOutput').addEventListener('keypress', logKey);
-        document.querySelector('.textInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                input = document.querySelector('.textInput').value
-                enterFunction(input)
-            }
-        });
-        document.querySelector('.enterButton').addEventListener('click', () => {
-                input = document.querySelector('.textInput').value
-                enterFunction(input)
-        });
-    </script>
+    <script src='./main.js'></script>
 </body>
 
 </html>
