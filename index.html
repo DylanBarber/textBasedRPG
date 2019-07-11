@@ -15,9 +15,7 @@
     <div class='pageWrapper'>
         <h1>RPG GAME</h1>
         <div class='gameContainer'>
-            <div class='gameOutput'>
-                <p>TEST TEXT</p>
-            </div>
+            <textarea class='gameOutput' id='gameOutput'></textarea>
             <div></div>
             <div class='gameControls'>
 
@@ -27,6 +25,21 @@
         </div>
     </div>
     <script>
+        // let input;
+        function enterFunction(input) {
+            document.querySelector('.gameOutput').value += (input + '\n');
+        }
+        // document.querySelector('#gameOutput').addEventListener('keypress', logKey);
+        document.querySelector('.textInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                input = document.querySelector('.textInput').value
+                enterFunction(input)
+            }
+        });
+        document.querySelector('.enterButton').addEventListener('click', () => {
+                input = document.querySelector('.textInput').value
+                enterFunction(input)
+        });
     </script>
 </body>
 

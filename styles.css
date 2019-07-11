@@ -43,14 +43,14 @@ h1 {
 }
 .gameControls {
     height: 10%;
-    width: 100%;
+    width: 98%;
     flex-direction: row;
     flex-wrap: nowrap;
     border: 1px solid black;
     display: flex;
 }
 .gameOutput {
-    height: 80%;
-    width: 100%;
+    height: 87%;
+    width: 98%;
     background-color: lightgrey;
 }
