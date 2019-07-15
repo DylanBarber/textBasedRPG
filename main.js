@@ -4,8 +4,8 @@ let keypressed = false;
 document.querySelector('.gameOutput').disabled = true;
 
 //AutoScroll the text area
-function scrollDown(){
-document.getElementById("gameOutput").scrollTop = document.getElementById("gameOutput").scrollHeight 
+function scrollDown() {
+    document.getElementById("gameOutput").scrollTop = document.getElementById("gameOutput").scrollHeight
 };
 
 //Append to text area
@@ -60,7 +60,7 @@ async function getInput() {
 
     log("Welcome to TextScape.");
     log("Any time you see * after a sentence press {ENTER} to continue or {↵} for mobile users*");
-    let  input = await getInput();
+    let input = await getInput();
     textInput.value = ''
     log("Before we get started, what's your name?");
     input = await getInput();
@@ -79,7 +79,7 @@ async function getInput() {
     textInput.value = ''
     if (input.toLowerCase() === 'yes') {
         stats.characterSelected = "warrior";
-    } else{
+    } else {
         log("Would you like to become an archer?");
         input = await getInput();
         textInput.value = ''
@@ -91,7 +91,7 @@ async function getInput() {
             textInput.value = ''
             if (input.toLowerCase() === 'yes') {
                 stats.characterSelected = "mage";
-            } 
+            }
         }
     }
     //telling user what class has been selected, and sets level to 5.
@@ -129,10 +129,71 @@ async function getInput() {
         }
     }
 
-    log("You have been handed a " + items.weapon + ".");
-    log("Your current damage is " + stats.damage + ".*");
+    log("You have been handed a " + items.weapon + ".*");
     input = await getInput();
     textInput.value = ''
 
-// INSERT REST
+    // INSERT REST
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //spawns goblin
+    let goblin = {
+        name: "goblin",
+        health: 5,
+        damage: randomNumber(),
+    }
+
+
+    //start goblin battle
+    log("Oh no, there's a " + goblin.name + " attacking our village!");
+    log("Help us, " + characterName + "!");
+    log("With your new " + weapon + ", you can help us defeat the goblin!");
+
+    //goblin attack loop
+    while (goblin) {
+        stats.health -= goblin.damage;
+        if (goblin.damage === 0) {
+            log("The " + goblin.name + " hit a " + goblin.damage + ". You took no damage! Your health is still " + stats.health + ".");
+        } else {
+            log("Ouch! The " + goblin.name + " hit you for a " + goblin.damage + ". Your health is now " + stats.health + ".");
+        }
+        if (stats.health <= 0) {
+            log("Oh dear, you have died!");
+            //end game screen here?
+        }
+        response = confirm("Would you like to retaliate?");
+        if (response) {
+            log("You have attacked the " + goblin.name + " with your " + weapon + "!");
+            if (stats.damage === 0) {
+                log("You hit a " + stats.damage + "! You dealt no damage. The " + goblin.name + "'s health is still " + goblin.health + ".");
+            } else {
+                goblin.health -= stats.damage;
+                stats.meleeExperience += stats.damage * 4;
+                log("You have hit a " + stats.damage + ". The " + goblin.name + "'s health is now " + goblin.health + ".");
+                if (goblin.health <= 0) {
+                    items.coins += 10;
+                    log("You have slain the " + goblin.name + ".");
+                    log("You have gained 10 coins!");
+                    if (characterSelected === "warrior") {
+                        log("You have gained " + stats.meleeExperience + " melee experience!");
+                    }
+                    goblin = false;
+                    log("Thank you, " + characterName + "! You're our hero!");
+                }
+            }
+        }
+    }
 })();
