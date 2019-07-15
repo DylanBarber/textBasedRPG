@@ -26,6 +26,7 @@ async function getInput() {
         });
         enterButton.addEventListener('click', () => {
             resolve(textInput.value);
+            textInput.value = '';
         });
 
     })
@@ -34,6 +35,7 @@ async function getInput() {
 
 //GAME START
 (async() => {
+    //Object Initialization
     let stats = {
         health: 100,
         damage: 1,
@@ -55,10 +57,13 @@ async function getInput() {
 
 
 
-    log("Welcome to the text based RPG.");
-    log("Any time you see * after a sentence press {ENTER} to continue or {↵} for mobile users");
+    log("Welcome to TextScape.");
+    log("Any time you see * after a sentence press {ENTER} to continue or {↵} for mobile users*");
+    let  input = await getInput();
+    textInput.value = ''
     log("Before we get started, what's your name?");
-    let input = await getInput();
+    input = await getInput();
+    textInput.value = ''
     let characterName = input;
     log(characterName + "!" + " Weird name.. but it'll do.");
     log("Let's first get you set up with some basic skills.*");
@@ -69,23 +74,25 @@ async function getInput() {
     //character selection
     log("Would you like to become a warrior?");
     input = await getInput();
+    textInput.value = ''
+    textInput.value = ''
     if (input.toLowerCase() === 'yes') {
-        console.log(input)
         stats.characterSelected = "warrior";
     } else{
         log("Would you like to become an archer?");
         input = await getInput();
+        textInput.value = ''
         if (input.toLowerCase() === 'yes') {
             stats.characterSelected = "archer";
         } else {
             log("Would you like to become a mage?");
             input = await getInput();
+            textInput.value = ''
             if (input.toLowerCase() === 'yes') {
                 stats.characterSelected = "mage";
             } 
         }
     }
-    console.log(stats.characterSelected)
     //telling user what class has been selected, and sets level to 5.
     if (stats.characterSelected === "warrior") {
         log("You have selected to become a warrior!");
@@ -102,25 +109,29 @@ async function getInput() {
         }
     }
 
-    // //assigning starting weapons
-    // alert("Now, we must get you started with a weapon.");
-    // if (characterSelected === "warrior") {
-    //     weapon = "dagger";
-    //     stats.damage += 1;
-    // } else {
-    //     if (characterSelected === "archer") {
-    //         weapon = "bow";
-    //         stats.damage += 1;
-    //     } else {
-    //         if (characterSelected === "mage") {
-    //             weapon = "staff";
-    //             stats.damage += 1;
-    //         }
-    //     }
-    // }
+    //assigning starting weapons
+    log("Now, we must get you started with a weapon.*");
+    input = await getInput();
+    textInput.value = ''
+    if (input === "warrior") {
+        weapon = "dagger";
+        stats.damage += 1;
+    } else {
+        if (stats.characterSelected === "archer") {
+            weapon = "bow";
+            stats.damage += 1;
+        } else {
+            if (stats.characterSelected === "mage") {
+                weapon = "staff";
+                stats.damage += 1;
+            }
+        }
+    }
 
-    // alert("You have been handed a " + weapon + ".");
-    // alert("Your current damage is " + stats.damage + ".");
+    log("You have been handed a " + weapon + ".");
+    log("Your current damage is " + stats.damage + ".*");
+    input = await getInput();
+    textInput.value = ''
 
     // //spawns goblin
     // let goblin = {

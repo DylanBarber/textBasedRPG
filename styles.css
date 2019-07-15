@@ -26,6 +26,7 @@ body {
     justify-content: space-between;
     flex-wrap: nowrap;
     flex-direction: column;
+    max-width: 900px;
 }
 h1 {
     font-family: 'sf_pixelateregular';
